@@ -3,6 +3,9 @@ import sqlite3
 import logging
 
 def main():
+    logging.basicConfig(level=logging.DEBUG)
+    logging.info("----------------- sqlite work example ------------")
+
     from sqlite import create, update
     con = sqlite3.connect("testDB.db")
 

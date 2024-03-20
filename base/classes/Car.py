@@ -1,11 +1,12 @@
 class Car:
-    model = ""
-    make = ""
+    __model = ""
+    __make = ""
 
-    def __init__(self, model, *, make, year=""):
+    def __init__(self, model, *, make, year="", __prival=0):
         self.model = model
         self.make = make
         self.year = year
+        self.__prival = 10
 
 
     # def __init__(self, model, make, year):
@@ -15,6 +16,6 @@ class Car:
 
 
     def display(self):
-        print("Car is "+ self.model + ", "+ self.make + ", "+ self.year)
+        print("Car is "+ self.model + ", "+ self.make + ", "+ self.year  + ", " + self.__prival )
 
 
