@@ -27,4 +27,12 @@ print(obj.a)
 
 # Attempting to change the price directly (This won't work because __maxprice is a private attribute)
 # obj.__maxprice = 1000
-print(obj.__maxprice)
+# print(obj.__maxprice)
+
+print(obj.__dict__)
+
+obj._Computer__maxprice = 88
+
+print (obj._Computer__maxprice)## This way we can able to access the private variable in python
+
+print(obj.__dict__)

@@ -1,7 +1,7 @@
 from Car import Car
 
 def main():
-    honda = Car("Honda", make="City", __prival="40")
+    honda = Car("Honda", make="City")
     print("make= "+ honda.make)
     print("model= "+ honda.model)
 
