@@ -39,7 +39,7 @@ print(jwtToken)
 
 print('now verifying jwt token----------------')
 
-verified = '';
+verified = ''
 # verified = verifyJwt(jwtToken)
 
 try:
