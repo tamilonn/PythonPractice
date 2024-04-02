@@ -38,3 +38,5 @@ print(f'private JWK= {privkey}')
 #    "dq":"h9wDFFni5ECEKfnHRn3DrGWBXZPmIMLP-jwvgCoNMkWMEEGSvBLC27aeCbvJKhNBJRS5IpkpJ-6hqoHYs3t6PeXXJnkEwC6NhzKUWUqFpe5uhDD_xl1oeRNE2jX-cKkqOx_KwWuQehM5A2MvFskZwJ9JboOVUaIIKUdWK8OEVZk",
 #    "qi":"3pMJnE-_M_0UCba9R6zL5UqqIBiQK_cvwzYohkaBb-lkrWI_qiGKNwGMxF1NsRZbAOoQVX0ReMhhB_QOIrgQBUYojRa2PAeH_uzzt98B0iCf9Y_SZH95I3OMoL3npnsi7yjNll1IFZcxSLL_1vTbTneIqitCrQphXii4MmznRNw"
 # }
+
+print('---------------------------------------------')

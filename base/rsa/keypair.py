@@ -39,6 +39,7 @@ def sign_verify(publickey, privatekey):
      signature2 = rsa.sign_hash(hash, privatekey, 'SHA-1')
      print('------------ done -------------')
 
+     print('------------ done -------------')
 
 
 if __name__ == '__main__':

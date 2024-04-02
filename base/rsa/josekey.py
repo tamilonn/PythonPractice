@@ -52,6 +52,48 @@ print('-----------------------------------')
 pubkey = mykey.public_key
 print(pubkey)
 print('-----------------------------------')
+configurations
+	
+  "":"",
+  "":"",
+  "":"",
+  "":"",
+  "":"",
+  "":""
+{
+  "success": true,
+  "apiversion": "1.0",
+  "data": {
+        "algorithm" : "RSA256",
+          "application":"credit card service",
+          "token_expiration_time": 1200,
+          "signkey_rotate_time":7776000,
+          "kill_jwt": "False",
+          "comments":"This is credit card service"
+        "config_id":"123456789",
+        "action":"SAVE",
+        "internal":"True",
+        "organization":"jaykrishco",
+        "created_date":"2024-04-02 12:30:888",
+        "updated_date":"2024-04-02 12:30:888"
+  },
+  "error": null
+}
+
+{
+  "algorithm" : "RSA256",
+  "application":"credit card service",
+  "token_expiration_time": 1200,
+  "signkey_rotate_time":7776000,
+  "kill_jwt": "False",
+  "comments":"This is credit card service"
+  "config_id":"123456789",
+  "action":"SAVE",
+  "internal":"True",
+  "organization":"jaykrishco",
+  "created_date":"2024-04-02 12:30:888",
+  "updated_date":"2024-04-02 12:30:888"
+}
 
 
 key = RSAKey(private_key, ALGORITHMS.RS256)
