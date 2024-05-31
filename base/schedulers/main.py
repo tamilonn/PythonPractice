@@ -3,6 +3,7 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 from apscheduler.jobstores.memory import MemoryJobStore
 from contextlib import asynccontextmanager
 import uvicorn
+from pytz import utc
 
 
 @asynccontextmanager
@@ -16,6 +17,7 @@ async def lifespan(app: FastAPI):
     # Shut down logic here....
         print('After application is shut down....')
         scheduler.remove_job('my_job_id')
+        print('scheduler is removed and shutdown')
         scheduler.shutdown()
 
 # Create a FastAPI app instance
@@ -32,9 +34,10 @@ jobstores = {
     'default': MemoryJobStore()
 }
 # Initialize an AsyncIOScheduler with the jobstore
-scheduler = AsyncIOScheduler(jobstores=jobstores, timezone='Asia/Kolkata')
+# scheduler = AsyncIOScheduler(jobstores=jobstores, timezone='Asia/Kolkata')
+scheduler = AsyncIOScheduler(jobstores=jobstores, timezone=utc)
 
-# Job running every 10 seconds
+# Job running every 3 seconds
 @scheduler.scheduled_job('interval', seconds=3)
 def scheduled_job_1():
     print("scheduled_job_1")

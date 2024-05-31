@@ -35,6 +35,9 @@ def generate_keypair():
 
 public_key, private_key = generate_keypair()
 
+
+
+
 #TODO
 
 def genjwk():
@@ -46,58 +49,19 @@ mykey = genjwk()
 print(mykey)
 print('-----------------------------------')
 new_pem = mykey.to_pem(pem_format="PKCS8")
-print(new_pem)
+print('new_pem=', new_pem)
 print('-----------------------------------')
 
 pubkey = mykey.public_key
 print(pubkey)
 print('-----------------------------------')
-configurations
-	
-  "":"",
-  "":"",
-  "":"",
-  "":"",
-  "":"",
-  "":""
-{
-  "success": true,
-  "apiversion": "1.0",
-  "data": {
-        "algorithm" : "RSA256",
-          "application":"credit card service",
-          "token_expiration_time": 1200,
-          "signkey_rotate_time":7776000,
-          "kill_jwt": "False",
-          "comments":"This is credit card service"
-        "config_id":"123456789",
-        "action":"SAVE",
-        "internal":"True",
-        "organization":"jaykrishco",
-        "created_date":"2024-04-02 12:30:888",
-        "updated_date":"2024-04-02 12:30:888"
-  },
-  "error": null
-}
-
-{
-  "algorithm" : "RSA256",
-  "application":"credit card service",
-  "token_expiration_time": 1200,
-  "signkey_rotate_time":7776000,
-  "kill_jwt": "False",
-  "comments":"This is credit card service"
-  "config_id":"123456789",
-  "action":"SAVE",
-  "internal":"True",
-  "organization":"jaykrishco",
-  "created_date":"2024-04-02 12:30:888",
-  "updated_date":"2024-04-02 12:30:888"
-}
 
 
-key = RSAKey(private_key, ALGORITHMS.RS256)
-print(key)
+# key = RSAKey(private_key, ALGORITHMS.RS256)
+# print(key)
+
+
+
 
 # token = "eyJhbGciOiJIUzI1NiIsImtpZCI6IjAxOGMwYWU1LTRkOWItNDcxYi1iZmQ2LWVlZjMxNGJjNzAzNyJ9.SXTigJlzIGEgZGFuZ2Vyb3VzIGJ1c2luZXNzLCBGcm9kbywgZ29pbmcgb3V0IHlvdXIgZG9vci4gWW91IHN0ZXAgb250byB0aGUgcm9hZCwgYW5kIGlmIHlvdSBkb24ndCBrZWVwIHlvdXIgZmVldCwgdGhlcmXigJlzIG5vIGtub3dpbmcgd2hlcmUgeW91IG1pZ2h0IGJlIHN3ZXB0IG9mZiB0by4.s0h6KThzkfBBBkLspW1h84VsJZFTsPPqMDA7g1Md7p0"
 # >>> hmac_key = {

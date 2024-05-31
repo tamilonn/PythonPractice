@@ -31,6 +31,7 @@ def verify(data: str, signature, publickey):
 def sign_verify(publickey, privatekey):
      data = 'Hello World Again!'.encode('utf8')
      signature = rsa.sign(data, privatekey, 'SHA-1')
+     print('signature=', signature)
      rsa.verify(data, signature, publickey)
     #  'SHA-1'
 
@@ -74,6 +75,9 @@ if __name__ == '__main__':
      #verify
      verified = verify(msg, signed, privatekey)
      print(verified)
+
+
+
 
   
 

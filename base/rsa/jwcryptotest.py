@@ -1,4 +1,12 @@
+import json
+from time import time
 from jwcrypto import jwk
+from jwcrypto.jwk import JWK, JWKSet
+from jose import jwt
+
+jwtkeys: dict[str,list]={}
+keys = "keys"
+keylist: list = []
 
 # jwkpair = jwk.JWK.generate(kty='RSA', size=2048) 
 jwkpair = jwk.JWK.generate(kty='RSA', size=2048, kid='mykeyid123', use='sig', alg='RSA256')
@@ -8,6 +16,9 @@ jwkpair = jwk.JWK.generate(kty='RSA', size=2048, kid='mykeyid123', use='sig', al
 pubkey = jwkpair.export_public(as_dict=True)
 
 privkey = jwkpair.export_private(as_dict=True)
+
+myjwk = JWK.from_json(json.dumps(pubkey))
+keylist.append(myjwk)
 
 print(f'public JWK= {pubkey}')
 # {
@@ -40,3 +51,113 @@ print(f'private JWK= {privkey}')
 # }
 
 print('---------------------------------------------')
+
+# jwkpair = jwk.JWK.generate(kty='RSA', size=2048) 
+jwkpair = jwk.JWK.generate(kty='RSA', size=2048, kid='mykeyid123', use='sig', alg='RSA256')
+
+# print(f'jwk=  {jwkpair}')
+
+pubkey = jwkpair.export_public(as_dict=True)
+
+privkey = jwkpair.export_private(as_dict=True)
+
+myjwk = JWK.from_json(json.dumps(pubkey))
+keylist.append(myjwk)
+
+
+# jwkpair = jwk.JWK.generate(kty='RSA', size=2048) 
+jwkpair = jwk.JWK.generate(kty='RSA', size=2048, kid='mykeyid123', use='sig', alg='RSA256')
+
+# print(f'jwk=  {jwkpair}')
+
+pubkey = jwkpair.export_public(as_dict=True)
+
+privkey = jwkpair.export_private(as_dict=True)
+
+myjwk = JWK.from_json(json.dumps(pubkey))
+keylist.append(myjwk)
+
+
+# jwkpair = jwk.JWK.generate(kty='RSA', size=2048) 
+jwkpair = jwk.JWK.generate(kty='RSA', size=2048, kid='tamilpockid', use='sig', alg='RSA256')
+
+# print(f'jwk=  {jwkpair}')
+
+pubkey = jwkpair.export_public(as_dict=True)
+
+privkey = jwkpair.export_private(as_dict=True)
+
+myjwk = JWK.from_json(json.dumps(pubkey))
+keylist.append(myjwk)
+
+
+
+jwtkeys[keys] = keylist
+
+myjwkset = JWKSet.from_json(json.dumps(jwtkeys))
+
+
+print(' JWKSet is below --------------------------------------------')
+print(myjwkset)
+
+publickeys = myjwkset.export()
+print(' JWKSet exported keys is below --------------------------------------------')
+print('publickeys =========', publickeys)
+
+
+
+
+
+
+
+def sign_and_verify_jwt(jwk: JWK)-> str:
+
+    expiry = int(time()) + 2400
+
+    payload_data = {
+        "sub": "tamilonn",
+        "name": "Tamilselvan Radhakrishnan",
+        "nickname": "Jess",
+        "exp": expiry,
+        "iss": "jaykrishco",
+        "nbf": 1715148460,
+        "iat": 1715148460,
+        "jti": "jti11111",
+        "aud": "credit card service"
+    }
+
+    headers = {
+        "kid": "tamilpockid"    
+    }
+
+    new_token = jwt.encode(claims=payload_data, headers=headers, key=jwk,  algorithm='RS256')
+
+    print('   new token is : ', new_token)
+
+    payload = jwt.decode(
+        new_token,
+        key=jwk,
+        algorithms=["RS256", ],
+        audience="credit card service"
+
+    )
+
+    print('   payload is : ', payload)
+    return new_token
+
+
+jwttoken = sign_and_verify_jwt(jwkpair)
+
+#verify token using JWKSet public key
+testkid= "tamilpockid"
+pubjwk = myjwkset.get_key(testkid)
+
+payload = jwt.decode(
+    jwttoken,
+    key=pubjwk,
+    algorithms=["RS256", ],
+    audience="credit card service")
+
+print(payload)
+
+print('conclusion:   jwcrypto is good for using sign/verify JWT token since it support JWKSet with "kid" searching public key (JWK).  Hence we will use JWK instead of RSAKey')

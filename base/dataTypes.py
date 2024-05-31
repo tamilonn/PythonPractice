@@ -28,3 +28,27 @@ print("multiplication is "+ str(mul))
 div = num2 / num1
 print("division is "+ str(div))
 
+str1 = 'a'
+str2 = 'a'
+
+print (str1 != str2)
+
+print(str1 is str2)
+
+'-------------------------------------'
+
+thistuple = ("apple", "banana", "cherry")
+for x in thistuple:
+  print(x)
+
+thistuple = ("apple", "banana", "cherry")
+i = 0
+while i < len(thistuple):
+  print(thistuple[i])
+  i = i + 1
+
+  '-----------------------------------------------'
+
+thislist = ["apple", "banana", "cherry"]
+thislist.append("orange")
+print(thislist)
